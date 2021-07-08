@@ -1,0 +1,511 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Практикум.Objects</name>
+    </assembly>
+    <members>
+        <member name="T:IIS.Практикум.Склад">
+            <summary>
+            Склад.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.Склад.Номер">
+            <summary>
+            Номер.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.Склад.Адрес">
+            <summary>
+            Адрес.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.Склад.Кладовщик">
+            <summary>
+            Склад.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.Склад.ТоварНаСкладе">
+            <summary>
+            Склад.
+            </summary>
+        </member>
+        <member name="T:IIS.Практикум.Склад.Views">
+            <summary>
+            Class views container.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.Склад.Views.СкладE">
+            <summary>
+            "СкладE" view.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.Склад.Views.СкладL">
+            <summary>
+            "СкладL" view.
+            </summary>
+        </member>
+        <member name="T:IIS.Практикум.Документ">
+            <summary>
+            Документ.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.Документ.Номер">
+            <summary>
+            Номер.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.Документ.ДатаЗаполнения">
+            <summary>
+            ДатаЗаполнения.
+            </summary>
+        </member>
+        <member name="T:IIS.Практикум.Документ.Views">
+            <summary>
+            Class views container.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.Документ.Views.ДокументE">
+            <summary>
+            "ДокументE" view.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.Документ.Views.ДокументL">
+            <summary>
+            "ДокументL" view.
+            </summary>
+        </member>
+        <member name="T:IIS.Практикум.СтрокаЗаказа">
+            <summary>
+            Строка заказа.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.СтрокаЗаказа.Количество">
+            <summary>
+            Количество.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.СтрокаЗаказа.ЦенаСНалогами">
+            <summary>
+            ЦенаСНалогами.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.СтрокаЗаказа.Сумма">
+            <summary>
+            Сумма.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.СтрокаЗаказа.Товар">
+            <summary>
+            Строка заказа.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.СтрокаЗаказа.Заказ">
+            <summary>
+            мастеровая ссылка на шапку IIS.Практикум.Заказ.
+            </summary>
+        </member>
+        <member name="T:IIS.Практикум.СтрокаЗаказа.Views">
+            <summary>
+            Class views container.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.СтрокаЗаказа.Views.СтрокаЗаказаE">
+            <summary>
+            "СтрокаЗаказаE" view.
+            </summary>
+        </member>
+        <member name="T:IIS.Практикум.DetailArrayOfСтрокаЗаказа">
+            <summary>
+            Detail array of СтрокаЗаказа.
+            </summary>
+        </member>
+        <member name="M:IIS.Практикум.DetailArrayOfСтрокаЗаказа.#ctor(IIS.Практикум.Заказ)">
+            <summary>
+            Construct detail array.
+            </summary>
+            <summary>
+            Returns object with type СтрокаЗаказа by index.
+            </summary>
+            <summary>
+            Adds object with type СтрокаЗаказа.
+            </summary>
+        </member>
+        <member name="T:IIS.Практикум.СостояниеНакладной">
+            <summary>
+            Состояние накладной.
+            </summary>
+        </member>
+        <member name="F:IIS.Практикум.СостояниеНакладной.Новая">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IIS.Практикум.СостояниеНакладной.Выписанная">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IIS.Практикум.СостояниеНакладной.Приостановленная">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IIS.Практикум.СостояниеНакладной.Готовая">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IIS.Практикум.СостояниеНакладной.Отгруженная">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:IIS.Практикум.Товар">
+            <summary>
+            Товар.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.Товар.КодТовара">
+            <summary>
+            КодТовара.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.Товар.Название">
+            <summary>
+            Название.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.Товар.ЕдиницыИзмерения">
+            <summary>
+            ЕдиницыИзмерения.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.Товар.Описание">
+            <summary>
+            Описание.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.Товар.Цена">
+            <summary>
+            Цена.
+            </summary>
+        </member>
+        <member name="T:IIS.Практикум.Товар.Views">
+            <summary>
+            Class views container.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.Товар.Views.ТоварE">
+            <summary>
+            "ТоварE" view.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.Товар.Views.ТоварL">
+            <summary>
+            "ТоварL" view.
+            </summary>
+        </member>
+        <member name="T:IIS.Практикум.Сотрудник">
+            <summary>
+            Сотрудник.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.Сотрудник.ТабельныйНомер">
+            <summary>
+            ТабельныйНомер.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.Сотрудник.Фамилия">
+            <summary>
+            Фамилия.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.Сотрудник.Имя">
+            <summary>
+            Имя.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.Сотрудник.Отчество">
+            <summary>
+            Отчество.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.Сотрудник.Телефон">
+            <summary>
+            Телефон.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.Сотрудник.Email">
+            <summary>
+            Email.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.Сотрудник.Должность">
+            <summary>
+            Должность.
+            </summary>
+        </member>
+        <member name="T:IIS.Практикум.Сотрудник.Views">
+            <summary>
+            Class views container.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.Сотрудник.Views.СотрудникE">
+            <summary>
+            "СотрудникE" view.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.Сотрудник.Views.СотрудникL">
+            <summary>
+            "СотрудникL" view.
+            </summary>
+        </member>
+        <member name="T:IIS.Практикум.СостояниеЗаказа">
+            <summary>
+            Состояние заказа.
+            </summary>
+        </member>
+        <member name="F:IIS.Практикум.СостояниеЗаказа.Новый">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IIS.Практикум.СостояниеЗаказа.Оплаченный">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:IIS.Практикум.СостояниеЗаказа.Отменённый">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:IIS.Практикум.ЗаписьВНакладной">
+            <summary>
+            Запись в накладной.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.ЗаписьВНакладной.Количество">
+            <summary>
+            Количество.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.ЗаписьВНакладной.Вес">
+            <summary>
+            Вес.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.ЗаписьВНакладной.Цена">
+            <summary>
+            Цена.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.ЗаписьВНакладной.Сумма">
+            <summary>
+            Сумма.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.ЗаписьВНакладной.Товар">
+            <summary>
+            Запись в накладной.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.ЗаписьВНакладной.Накладная">
+            <summary>
+            мастеровая ссылка на шапку IIS.Практикум.Накладная.
+            </summary>
+        </member>
+        <member name="T:IIS.Практикум.ЗаписьВНакладной.Views">
+            <summary>
+            Class views container.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.ЗаписьВНакладной.Views.ЗаписьВНакладнойE">
+            <summary>
+            "ЗаписьВНакладнойE" view.
+            </summary>
+        </member>
+        <member name="T:IIS.Практикум.DetailArrayOfЗаписьВНакладной">
+            <summary>
+            Detail array of ЗаписьВНакладной.
+            </summary>
+        </member>
+        <member name="M:IIS.Практикум.DetailArrayOfЗаписьВНакладной.#ctor(IIS.Практикум.Накладная)">
+            <summary>
+            Construct detail array.
+            </summary>
+            <summary>
+            Returns object with type ЗаписьВНакладной by index.
+            </summary>
+            <summary>
+            Adds object with type ЗаписьВНакладной.
+            </summary>
+        </member>
+        <member name="T:IIS.Практикум.Накладная">
+            <summary>
+            Накладная.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.Накладная.Статус">
+            <summary>
+            Статус.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.Накладная.ДатаВремяОтгрузки">
+            <summary>
+            ДатаВремяОтгрузки.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.Накладная.Сумма">
+            <summary>
+            Сумма.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.Накладная.Вес">
+            <summary>
+            Вес.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.Накладная.Примечание">
+            <summary>
+            Примечание.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.Накладная.ФИОПолучателя">
+            <summary>
+            ФИОПолучателя.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.Накладная.МатериальноОтветственноеЛицо">
+            <summary>
+            Накладная.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.Накладная.Заказ">
+            <summary>
+            Накладная.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.Накладная.ЗаписьВНакладной">
+            <summary>
+            Накладная.
+            </summary>
+        </member>
+        <member name="T:IIS.Практикум.Накладная.Views">
+            <summary>
+            Class views container.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.Накладная.Views.НакладнаяE">
+            <summary>
+            "НакладнаяE" view.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.Накладная.Views.НакладнаяL">
+            <summary>
+            "НакладнаяL" view.
+            </summary>
+        </member>
+        <member name="T:IIS.Практикум.Заказ">
+            <summary>
+            Заказ.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.Заказ.Статус">
+            <summary>
+            Статус.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.Заказ.ДатаОтгрузки">
+            <summary>
+            ДатаОтгрузки.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.Заказ.ДатаОплаты">
+            <summary>
+            ДатаОплаты.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.Заказ.Цена">
+            <summary>
+            Цена.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.Заказ.Менеджер">
+            <summary>
+            Заказ.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.Заказ.СтрокаЗаказа">
+            <summary>
+            Заказ.
+            </summary>
+        </member>
+        <member name="T:IIS.Практикум.Заказ.Views">
+            <summary>
+            Class views container.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.Заказ.Views.ЗаказE">
+            <summary>
+            "ЗаказE" view.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.Заказ.Views.ЗаказL">
+            <summary>
+            "ЗаказL" view.
+            </summary>
+        </member>
+        <member name="T:IIS.Практикум.ТоварНаСкладе">
+            <summary>
+            Товар на складе.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.ТоварНаСкладе.Количество">
+            <summary>
+            Количество.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.ТоварНаСкладе.Товар">
+            <summary>
+            Товар на складе.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.ТоварНаСкладе.Склад">
+            <summary>
+            мастеровая ссылка на шапку IIS.Практикум.Склад.
+            </summary>
+        </member>
+        <member name="T:IIS.Практикум.ТоварНаСкладе.Views">
+            <summary>
+            Class views container.
+            </summary>
+        </member>
+        <member name="P:IIS.Практикум.ТоварНаСкладе.Views.ТоварНаСкладеE">
+            <summary>
+            "ТоварНаСкладеE" view.
+            </summary>
+        </member>
+        <member name="T:IIS.Практикум.DetailArrayOfТоварНаСкладе">
+            <summary>
+            Detail array of ТоварНаСкладе.
+            </summary>
+        </member>
+        <member name="M:IIS.Практикум.DetailArrayOfТоварНаСкладе.#ctor(IIS.Практикум.Склад)">
+            <summary>
+            Construct detail array.
+            </summary>
+            <summary>
+            Returns object with type ТоварНаСкладе by index.
+            </summary>
+            <summary>
+            Adds object with type ТоварНаСкладе.
+            </summary>
+        </member>
+        <member name="T:IIS.Практикум.Должность">
+            <summary>
+            Должность.
+            </summary>
+        </member>
+    </members>
+</doc>

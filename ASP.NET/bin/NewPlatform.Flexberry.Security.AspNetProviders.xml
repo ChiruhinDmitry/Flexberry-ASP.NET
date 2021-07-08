@@ -1,0 +1,230 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NewPlatform.Flexberry.Security.AspNetProviders</name>
+    </assembly>
+    <members>
+        <member name="T:NewPlatform.Flexberry.Security.FlexberryMembershipProvider">
+            <summary>
+            Провайдер членства пользователей.
+            </summary>
+        </member>
+        <member name="P:NewPlatform.Flexberry.Security.FlexberryMembershipProvider.AgentManager">
+            <summary>
+            Получение инстации менеджера агентов.
+            </summary>
+        </member>
+        <member name="P:NewPlatform.Flexberry.Security.FlexberryMembershipProvider.ApplicationName">
+            <summary>
+            Имя приложения.
+            </summary>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Security.FlexberryMembershipProvider.ChangePassword(System.String,System.String,System.String)">
+            <summary>
+            Смена пароля.
+            </summary>
+            <param name="username">Имя пользователя, которому меняем пароль.</param>
+            <param name="oldPassword">Старый пароль пользователя (для проверки).</param>
+            <param name="newPassword">Новый устанавливаемый пароль пользователя.</param>
+            <returns>Результат изменения пароля.</returns>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Security.FlexberryMembershipProvider.CreateUser(System.String,System.String,System.String,System.String,System.String,System.Boolean,System.Object,System.Web.Security.MembershipCreateStatus@)">
+            <summary>
+            Создать пользователя.
+            </summary>
+            <param name="username">Логин пользователя.</param>
+            <param name="password">Пароль пользователя.</param>
+            <param name="email">Электронный адрес пользователя.</param>
+            <param name="passwordQuestion">Секретный вопрос.</param>
+            <param name="passwordAnswer">Секретный ответ.</param>
+            <param name="isApproved">Является ли пользователь утверждённым.</param>
+            <param name="providerUserKey">Ключ пользователя (в нашем случае - логин).</param>
+            <param name="status">Статус создания пользователя.</param>
+            <returns>Созданный пользователь.</returns>
+        </member>
+        <member name="P:NewPlatform.Flexberry.Security.FlexberryMembershipProvider.EnablePasswordReset">
+            <summary>
+            Возможно обнулять пароль, <see cref="!:ResetPassword()"/>
+            </summary>
+        </member>
+        <member name="P:NewPlatform.Flexberry.Security.FlexberryMembershipProvider.EnablePasswordRetrieval">
+            <summary>
+            Получить пароли в исходном виде невозможно
+            </summary>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Security.FlexberryMembershipProvider.GetUser(System.String,System.Boolean)">
+            <summary>
+            Получаем пользователя по его имени.
+            </summary>
+            <param name="username">Имя пользователя.</param>
+            <param name="userIsOnline">Значение <c>true</c>, чтобы обновить метку даты и времени последней операции пользователя. Значение <c>false</c>, чтобы вернуть информацию пользователя без обновления метки даты и времени последней операции пользователя. </param>
+            <returns>Найденный пользователь или <c>null</c>.</returns>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Security.FlexberryMembershipProvider.GetUser(System.Object,System.Boolean)">
+            <summary>
+            Получаем пользователя по его ключу (у нас в качестве ключа используется логин пользователя).
+            </summary>
+            <param name="providerUserKey">Ключ пользователя (у нас в качестве ключа используется логин пользователя).</param>
+            <param name="userIsOnline">Значение <c>true</c>, чтобы обновить метку даты и времени последней операции пользователя. Значение <c>false</c>, чтобы вернуть информацию пользователя без обновления метки даты и времени последней операции пользователя.</param>
+            <returns>Найденный пользователь или <c>null</c>.</returns>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Security.FlexberryMembershipProvider.ResetPassword(System.String,System.String)">
+            <summary>
+            Сбрасываем пароль и возвращаем только что сгенеренный
+            </summary>
+            <param name="username"></param>
+            <param name="answer"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Security.FlexberryMembershipProvider.UpdateUser(System.Web.Security.MembershipUser)">
+            <summary>
+            Обновление пользователя.
+            </summary>
+            <param name="user">Информация о пользователе (пароля не содержит). </param>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Security.FlexberryMembershipProvider.ValidateUser(System.String,System.String)">
+            <summary>
+            Проверить пользователя по нашей БД с полномочиями.
+            </summary>
+            <param name="username"></param>
+            <param name="password"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Security.FlexberryMembershipProvider.Initialize(System.String,System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Проведение инициализации провайдера по настройкам из файла конфигурации.
+            </summary>
+            <param name="name">Имя провайдера в файле конфигурации.</param>
+            <param name="config">Секция конфига, соответствующая настройкам провайдера.</param>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Security.FlexberryMembershipProvider.GetAgentForUser(System.String)">
+            <summary>
+            Получить агента по имени пользователя.
+            </summary>
+            <param name="username">Имя пользователя</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Security.FlexberryMembershipProvider.InitializeProvider(System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Проведение инициализации провайдера по настройкам из конфигурации.
+            </summary>
+            <param name="config">Секция конфига, соответствующая настройкам провайдера.</param>
+        </member>
+        <member name="T:NewPlatform.Flexberry.Security.FlexberryProfileProvider">
+            <summary>
+            Провайдер профиля пользователя.
+            </summary>
+        </member>
+        <member name="P:NewPlatform.Flexberry.Security.FlexberryProfileProvider.AgentManager">
+            <summary>
+            Получение инстации менеджера агентов.
+            </summary>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Security.FlexberryProfileProvider.GetPropertyValues(System.Configuration.SettingsContext,System.Configuration.SettingsPropertyCollection)">
+            <summary>
+            Получить значения свойств.
+            </summary>
+            <param name="context"></param>
+            <param name="collection"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Security.FlexberryProfileProvider.SetPropertyValues(System.Configuration.SettingsContext,System.Configuration.SettingsPropertyValueCollection)">
+            <summary>
+            Установить значения свойств.
+            </summary>
+            <param name="context"></param>
+            <param name="collection"></param>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Security.FlexberryProfileProvider.GetAgentForUser(System.String)">
+            <summary>
+            Получить агента по имени пользователя.
+            </summary>
+            <param name="username">Имя пользователя</param>
+            <returns></returns>
+        </member>
+        <member name="T:NewPlatform.Flexberry.Security.FlexberryRoleProvider">
+            <summary>
+            Провайдер ролей.
+            </summary>
+        </member>
+        <member name="P:NewPlatform.Flexberry.Security.FlexberryRoleProvider.AgentManager">
+            <summary>
+            Получение инстации менеджера агентов.
+            </summary>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Security.FlexberryRoleProvider.AddUsersToRoles(System.String[],System.String[])">
+            <summary>
+            Добавить роли для пользователей.
+            </summary>
+            <param name="usernames"></param>
+            <param name="roleNames"></param>
+        </member>
+        <member name="P:NewPlatform.Flexberry.Security.FlexberryRoleProvider.ApplicationName">
+            <summary>
+            Имя приложения.
+            </summary>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Security.FlexberryRoleProvider.CreateRole(System.String)">
+            <summary>
+            Создание роли.
+            </summary>
+            <param name="roleName">Имя роли.</param>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Security.FlexberryRoleProvider.GetRolesForUser(System.String)">
+            <summary>
+            Получить список ролей текущего пользователя.
+            </summary>
+            <param name="username"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Security.FlexberryRoleProvider.GetUsersInRole(System.String)">
+            <summary>
+            Получить пользователей, принадлежащих роли.
+            </summary>
+            <param name="roleName">Имя роли</param>
+            <returns>Массив логинов</returns>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Security.FlexberryRoleProvider.IsUserInRole(System.String,System.String)">
+            <summary>
+            Проверить есть ли такая роль у пользователя.
+            </summary>
+            <param name="username">логин пользователя</param>
+            <param name="roleName">имя роли</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Security.FlexberryRoleProvider.RemoveUsersFromRoles(System.String[],System.String[])">
+            <summary>
+            Удаление пользователей из ролей.
+            </summary>
+            <param name="usernames">Имена пользователей.</param>
+            <param name="roleNames">Имена ролей.</param>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Security.FlexberryRoleProvider.RoleExists(System.String)">
+            <summary>
+            Проверка на существование роли.
+            </summary>
+            <param name="roleName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Security.FlexberryRoleProvider.Initialize(System.String,System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Проведение инициализации провайдера по настройкам из файла конфигурации.
+            </summary>
+            <param name="name">Имя провайдера в файле конфигурации.</param>
+            <param name="config">Секция конфига, соответствующая настройкам провайдера.</param>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Security.FlexberryRoleProvider.GetAgentForUser(System.String)">
+            <summary>
+            Получить агента по имени пользователя.
+            </summary>
+            <param name="username">Имя пользователя.</param>
+            <returns></returns>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Security.FlexberryRoleProvider.InitializeProvider(System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Проведение инициализации провайдера по настройкам из конфигурации.
+            </summary>
+            <param name="config">Секция конфига, соответствующая настройкам провайдера.</param>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,659 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NewPlatform.Flexberry.Caching</name>
+    </assembly>
+    <members>
+        <member name="T:NewPlatform.Flexberry.Caching.CacheItem">
+            <summary>
+            Incapsulates information about cache item include value and versions of tags.
+            </summary>
+        </member>
+        <member name="P:NewPlatform.Flexberry.Caching.CacheItem.Key">
+            <summary>
+            Gets key of cached item.
+            </summary>
+        </member>
+        <member name="P:NewPlatform.Flexberry.Caching.CacheItem.Value">
+            <summary>
+            Gets value of cached item.
+            </summary>
+        </member>
+        <member name="P:NewPlatform.Flexberry.Caching.CacheItem.Tags">
+            <summary>
+            Gets dictionary of tags associated with cache item.
+            </summary>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.CacheItem.#ctor(System.String,System.Object,System.Collections.Generic.IDictionary{System.String,System.Int32})">
+            <summary>
+            Initializes a new <see cref="T:NewPlatform.Flexberry.Caching.CacheItem" /> instance using the specified key, value and dictionary of tags (optionaly).
+            </summary>
+            <remarks>
+            Information about every tag includes tag's name and tag's version.
+            </remarks>
+            <param name="key">Key of cached item.</param>
+            <param name="value">Value of cached item.</param>
+            <param name="tags">Dictionary of tags associated with cached item.</param>
+            <exception cref="T:System.ArgumentException">Throws when tag's name is null or empty or if <paramref name="tags" /> dictionary contains two tags with same name.</exception>
+        </member>
+        <member name="T:NewPlatform.Flexberry.Caching.CacheItem`1">
+            <summary>
+            Incapsulates information about cache item include value and versions of tags.
+            </summary>
+            <typeparam name="T">Type of data for storing to cache.</typeparam>
+        </member>
+        <member name="P:NewPlatform.Flexberry.Caching.CacheItem`1.Value">
+            <summary>
+            Gets value of cached item.
+            </summary>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.CacheItem`1.#ctor(System.String,`0,System.Collections.Generic.IDictionary{System.String,System.Int32})">
+            <summary>
+            Initializes a new <see cref="T:NewPlatform.Flexberry.Caching.CacheItem" /> instance using the specified key, value and dictionary of tags (optionaly).
+            </summary>
+            <remarks>
+            Information about every tag includes tag's name and tag's version.
+            </remarks>
+            <param name="key">Key of cached item.</param>
+            <param name="value">Value of cached item.</param>
+            <param name="tags">Dictionary of tags associated with cached item.</param>
+            <exception cref="T:System.ArgumentException">Throws when tag's name is null or empty or if <paramref name="tags" /> dictionary contains two tags with same name.</exception>
+        </member>
+        <member name="T:NewPlatform.Flexberry.Caching.ICacheService">
+            <summary>
+            Base interface for cache services.
+            </summary>
+        </member>
+        <member name="P:NewPlatform.Flexberry.Caching.ICacheService.CacheName">
+            <summary>
+            Gets name of cache instance.
+            Use when multiple cache instances are provided in application.
+            </summary>
+        </member>
+        <member name="P:NewPlatform.Flexberry.Caching.ICacheService.DefaultExpirationTime">
+            <summary>
+            Default expiration time for cached items (in seconds).
+            Zero value means data stored without expiration.
+            </summary>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.ICacheService.GetCount">
+            <summary>
+            Returns the total number of cached itmes.
+            </summary>
+            <returns>Total number of cached itmes.</returns>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.ICacheService.GetTagsCount">
+            <summary>
+            Returns the total number of tags for cached itmes.
+            </summary>
+            <returns>Total number of tags for cached items.</returns>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.ICacheService.SetToCache(System.String,System.Object)">
+            <summary>
+            Saves data to cache.
+            </summary>
+            <remarks>
+            Data will be stored with <see cref="P:NewPlatform.Flexberry.Caching.ICacheService.DefaultExpirationTime" />.
+            If item with specified key already exists in cache, it will be replaced with item with new data.
+            </remarks>
+            <param name="key">Key of cached item.</param>
+            <param name="value">Value for caching.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown if key is null.</exception>
+            <returns>Returns <see langword="true" /> if data has been saved.</returns>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.ICacheService.SetToCache(System.String,System.Object,System.Collections.Generic.IList{System.String})">
+            <summary>
+            Saves data to cache.
+            </summary>
+            <remarks>
+            Data will be stored with <see cref="P:NewPlatform.Flexberry.Caching.ICacheService.DefaultExpirationTime" />.
+            If item with specified key already exists in cache, it will be replaced with item with new data.
+            </remarks>
+            <param name="key">Key of cached item.</param>
+            <param name="value">Value for caching.</param>
+            <param name="tags">Tags for cached item.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown if key is null.</exception>
+            <returns>Returns <see langword="true" /> if data has been saved.</returns>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.ICacheService.SetToCache(System.String,System.Object,System.Int32)">
+            <summary>
+            Saves data to cache.
+            </summary>
+            <remarks>
+            If item with specified key already exists in cache, it will be replaced with item with new data.
+            </remarks>
+            <param name="key">Key of cached item.</param>
+            <param name="value">Value for caching.</param>
+            <param name="expirationTime">Expiration time for stored item (in seconds). Zero value means data stored without expiration.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown if key is null.</exception>
+            <exception cref="T:System.ArgumentException">Thrown if expiration time is negative.</exception>
+            <returns>Returns <see langword="true" /> if data has been saved.</returns>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.ICacheService.SetToCache(System.String,System.Object,System.Int32,System.Collections.Generic.IList{System.String})">
+            <summary>
+            Saves data to cache.
+            </summary>
+            <remarks>
+            If item with specified key already exists in cache, it will be replaced with item with new data.
+            </remarks>
+            <param name="key">Key of cached item.</param>
+            <param name="value">Value for caching.</param>
+            <param name="expirationTime">Expiration time for stored item (in seconds). Zero value means data stored without expiration.</param>
+            <param name="tags">Tags for cached item.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown if key is null.</exception>
+            <exception cref="T:System.ArgumentException">Thrown if expiration time is negative.</exception>
+            <returns>Returns <see langword="true" /> if data has been saved.</returns>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.ICacheService.SetToCache``1(System.String,``0)">
+            <summary>
+            Saves data to cache.
+            </summary>
+            <remarks>
+            Data will be stored with <see cref="P:NewPlatform.Flexberry.Caching.ICacheService.DefaultExpirationTime" />.
+            If item with specified key already exists in cache, it will be replaced with item with new data.
+            </remarks>
+            <typeparam name="T">Type of data for storing to cache.</typeparam>
+            <param name="key">Key of cached item.</param>
+            <param name="value">Value for caching.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown if key is null.</exception>
+            <returns>Returns <see langword="true" /> if data has been saved.</returns>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.ICacheService.SetToCache``1(System.String,``0,System.Collections.Generic.IList{System.String})">
+            <summary>
+            Saves data to cache.
+            </summary>
+            <remarks>
+            Data will be stored with <see cref="P:NewPlatform.Flexberry.Caching.ICacheService.DefaultExpirationTime" />.
+            If item with specified key already exists in cache, it will be replaced with item with new data.
+            </remarks>
+            <typeparam name="T">Type of data for storing to cache.</typeparam>
+            <param name="key">Key of cached item.</param>
+            <param name="value">Value for caching.</param>
+            <param name="tags">Tags for cached item.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown if key is null.</exception>
+            <returns>Returns <see langword="true" /> if data has been saved.</returns>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.ICacheService.SetToCache``1(System.String,``0,System.Int32)">
+            <summary>
+            Saves data to cache.
+            </summary>
+            <remarks>
+            If item with specified key already exists in cache, it will be replaced with item with new data.
+            </remarks>
+            <typeparam name="T">Type of data for storing to cache.</typeparam>
+            <param name="key">Key of cached item.</param>
+            <param name="value">Value for caching.</param>
+            <param name="expirationTime">Expiration time for stored item (in seconds). Zero value means data stored without expiration.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown if key is null.</exception>
+            <exception cref="T:System.ArgumentException">Thrown if expiration time is negative.</exception>
+            <returns>Returns <see langword="true" /> if data has been saved.</returns>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.ICacheService.SetToCache``1(System.String,``0,System.Int32,System.Collections.Generic.IList{System.String})">
+            <summary>
+            Saves data to cache.
+            </summary>
+            <remarks>
+            If item with specified key already exists in cache, it will be replaced with item with new data.
+            </remarks>
+            <typeparam name="T">Type of data for storing to cache.</typeparam>
+            <param name="key">Key of cached item.</param>
+            <param name="value">Value for caching.</param>
+            <param name="expirationTime">Expiration time for stored item (in seconds). Zero value means data stored without expiration.</param>
+            <param name="tags">Tags for cached item.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown if key is null.</exception>
+            <exception cref="T:System.ArgumentException">Thrown if expiration time is negative.</exception>
+            <returns>Returns <see langword="true" /> if data has been saved.</returns>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.ICacheService.GetFromCache(System.String)">
+            <summary>
+            Retrieves data from cache.
+            </summary>
+            <param name="key">Key of cached item.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when key is null.</exception>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException">Thrown when item is not found in cache.</exception>
+            <returns>The retrieved cached item.</returns>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.ICacheService.GetFromCacheByTag(System.String)">
+            <summary>
+            Retrieves data from cache by specified tag.
+            </summary>
+            <param name="tag">Tag for searching cached items.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when tag is null.</exception>
+            <returns>The retrieved cached items.</returns>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.ICacheService.GetFromCacheByTags(System.Collections.Generic.IList{System.String})">
+            <summary>
+            Retrieves data from cache by specified tags.
+            </summary>
+            <param name="tags">Tags for searching cached items.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when tags are null.</exception>
+            <returns>The retrieved cached items.</returns>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.ICacheService.GetFromCache``1(System.String)">
+            <summary>
+            Retrieves data from cache.
+            </summary>
+            <typeparam name="T">Type of data for getting from cache.</typeparam>
+            <param name="key">Key of cached item.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when key is null.</exception>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException">Thrown when item is not found in cache.</exception>
+            <returns>The retrieved cached item.</returns>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.ICacheService.GetFromCacheByTag``1(System.String)">
+            <summary>
+            Retrieves data from cache by specified tag.
+            </summary>
+            <typeparam name="T">Type of data for getting from cache.</typeparam>
+            <param name="tag">Tag for searching cached items.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when tag is null.</exception>
+            <returns>The retrieved cached items.</returns>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.ICacheService.GetFromCacheByTags``1(System.Collections.Generic.IList{System.String})">
+            <summary>
+            Retrieves data from cache by specified tags.
+            </summary>
+            <typeparam name="T">Type of data for getting from cache.</typeparam>
+            <param name="tags">Tags for searching cached items.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when tags are null.</exception>
+            <returns>The retrieved cached items.</returns>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.ICacheService.TryGetFromCache(System.String,System.Object@)">
+            <summary>
+            Tries to retrieve the data from cache.
+            </summary>
+            <param name="key">Key of cached item.</param>
+            <param name="result">The retrieved cached item or <see langword="null" /> if item is not found in cache or key is null.</param>
+            <returns><see langword="true" /> if operation has been completed successfully and <see langword="false" /> otherwise.</returns>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.ICacheService.TryGetFromCacheByTag(System.String,System.Collections.Generic.IEnumerable{System.Object}@)">
+            <summary>
+            Tries to retrieve the data from cache by specified tag.
+            </summary>
+            <remarks>
+            If there is no items in cache marked by specified tag method will also return <see langword="true" />.
+            </remarks>
+            <param name="tag">Tag for searching cached items.</param>
+            <param name="result">The retrieved cached item or empty collection if items are not found in cache.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when tag is null.</exception>
+            <returns><see langword="true" /> if operation has been completed successfully and <see langword="false" /> otherwise.</returns>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.ICacheService.TryGetFromCacheByTags(System.Collections.Generic.IList{System.String},System.Collections.Generic.IEnumerable{System.Object}@)">
+            <summary>
+            Tries to retrieve the data from cache by specified tags.
+            </summary>
+            <remarks>
+            If there is no items in cache marked by specified tags method will also return <see langword="true" />.
+            </remarks>
+            <param name="tags">Tags for searching cached items.</param>
+            <param name="result">The retrieved cached items or empty collection if items are not found in cache.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when tags are null.</exception>
+            <returns><see langword="true" /> if operation has been completed successfully and <see langword="false" /> otherwise.</returns>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.ICacheService.TryGetFromCache``1(System.String,``0@)">
+            <summary>
+            Tries to retrieve the data from cache.
+            </summary>
+            <typeparam name="T">Type of data for getting from cache.</typeparam>
+            <param name="key">Key of cached item.</param>
+            <param name="result">The retrieved cached item or <see langword="default" /> if if item is not found in cache or key is null.</param>
+            <returns><see langword="true" /> if operation has been completed successfully and <see langword="false" /> otherwise.</returns>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.ICacheService.TryGetFromCacheByTag``1(System.String,System.Collections.Generic.IEnumerable{``0}@)">
+            <summary>
+            Tries to retrieve the data from cache by specified tag.
+            </summary>
+            <remarks>
+            If there is no items in cache marked by specified tag method will also return <see langword="true" />.
+            </remarks>
+            <typeparam name="T">Type of data for getting from cache.</typeparam>
+            <param name="tag">Tag for searching cached items.</param>
+            <param name="result">The retrieved cached items or empty collection if items are not found in cache.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when tag is null.</exception>
+            <returns><see langword="true" /> if operation has been completed successfully and <see langword="false" /> otherwise.</returns>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.ICacheService.TryGetFromCacheByTags``1(System.Collections.Generic.IList{System.String},System.Collections.Generic.IEnumerable{``0}@)">
+            <summary>
+            Tries to retrieve the data from cache by specified tags.
+            </summary>
+            <remarks>
+            If there is no items in cache marked by specified tags method will also return <see langword="true" />.
+            </remarks>
+            <typeparam name="T">Type of data for getting from cache.</typeparam>
+            <param name="tags">Tags for searching cached items.</param>
+            <param name="result">The retrieved cached items or empty collection if items are not found in cache.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when tags are null.</exception>
+            <returns><see langword="true" /> if operation has been completed successfully and <see langword="false" /> otherwise.</returns>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.ICacheService.GetTagsForItem(System.String)">
+            <summary>
+            Returns list of tags associated with specified cache item.
+            </summary>
+            <param name="key">Key of cached item.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when key is null.</exception>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException">Thrown when item is not found in cache.</exception>
+            <returns>List of tags associated with specified cache item.</returns>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.ICacheService.UpdateInCache(System.String,System.Object,System.Int32,System.Collections.Generic.IList{System.String})">
+            <summary>
+            Updates existing item in cache.
+            </summary>
+            <param name="key">Key of existing cache item.</param>
+            <param name="value">New value for update in cache item.</param>
+            <param name="expirationTime">New expiration time for existing cache item (in seconds). Zero value means data stored without expiration.</param>
+            <param name="tags">Additional list of tags for cached item.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown if key is null.</exception>
+            <exception cref="T:System.ArgumentException">Thrown if expiration time is negative.</exception>
+            <returns>Returns <see langword="true" /> if data has been updated.</returns>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.ICacheService.UpdateInCache``1(System.String,``0,System.Int32,System.Collections.Generic.IList{System.String})">
+            <summary>
+            Updates existing item in cache.
+            </summary>
+            <typeparam name="T">Type of data for updating in cache.</typeparam>
+            <param name="key">Key of existing cache item.</param>
+            <param name="value">New value for update in cache item.</param>
+            <param name="expirationTime">New expiration time for existing cache item (in seconds). Zero value means data stored without expiration.</param>
+            <param name="tags">Additional list of tags for cached item.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown if key is null.</exception>
+            <exception cref="T:System.ArgumentException">Thrown if expiration time is negative.</exception>
+            <returns>Returns <see langword="true" /> if data has been saved.</returns>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.ICacheService.DeleteFromCache(System.String)">
+            <summary>
+            Deletes data from cache.
+            </summary>
+            <param name="key">Key of cached item.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when key is null.</exception>
+            <returns>Returns <see langword="true" /> if data has been deleted and <see langword="false" /> if key is not found in cache.</returns>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.ICacheService.DeleteFromCacheByTag(System.String)">
+            <summary>
+            Deletes data from cache by specified tag.
+            </summary>
+            <param name="tag">Tag of cached items.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when tag is null.</exception>
+            <returns>Returns <see langword="true" /> if data has been deleted and <see langword="false" /> if no matching data is found in cache.</returns>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.ICacheService.DeleteFromCacheByTags(System.Collections.Generic.IList{System.String})">
+            <summary>
+            Deletes data from cache by specified tags.
+            </summary>
+            <param name="tags">Tags of cached items.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when tags are null.</exception>
+            <returns>Returns <see langword="true" /> if data has been deleted and <see langword="false" /> if no matching data is found in cache.</returns>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.ICacheService.ClearCache">
+            <summary>
+            Clears all stored objects from memory.
+            </summary>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.ICacheService.Trim(System.Int32)">
+            <summary>
+            Removes a specified percentage of cache entries from the cache object.
+            </summary>
+            <param name="percent">The percentage of total cache entries to remove.</param>
+            <returns>The number of entries removed from the cache.</returns>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.ICacheService.Exists(System.String)">
+            <summary>
+            Check for existing item in cache.
+            </summary>
+            <param name="key">Key of cached item.</param>
+            <returns><see langword="true" /> if item exists in cache. <see langword="false" /> if item is not exists in cache or key is null.</returns>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.ICacheService.ExistsByTag(System.String)">
+            <summary>
+            Check if at least one item with specified tag exists in cache.
+            </summary>
+            <param name="tag">Tag of cached items.</param>
+            <returns><see langword="true" /> if at least one item with specified tag exists.</returns>
+        </member>
+        <member name="T:NewPlatform.Flexberry.Caching.MemoryCacheService">
+            <summary>
+            Implementation of <see cref="T:NewPlatform.Flexberry.Caching.ICacheService" /> based on <see cref="T:NewPlatform.Flexberry.Caching.MemoryCacheService" />.
+            </summary>
+        </member>
+        <member name="P:NewPlatform.Flexberry.Caching.MemoryCacheService.CacheName">
+            <inheritdoc cref="T:NewPlatform.Flexberry.Caching.ICacheService" />
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.MemoryCacheService.GetCount">
+            <inheritdoc cref="T:NewPlatform.Flexberry.Caching.ICacheService" />
+            <remarks>
+            Information about each tag is also stored in cache.
+            So total number of cached items will include corresponding count of items with information about tags.
+            </remarks>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.MemoryCacheService.GetTagsCount">
+            <inheritdoc cref="T:NewPlatform.Flexberry.Caching.ICacheService" />
+            <remarks>
+            Information about tags deleted from cache only when cahce is totally clearing.
+            So cache will store infromation about ever added tags until chache is totally cleared.
+            </remarks>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.MemoryCacheService.GetTagsForItem(System.String)">
+            <inheritdoc cref="T:NewPlatform.Flexberry.Caching.ICacheService" />
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.MemoryCacheService.DeleteFromCache(System.String)">
+            <inheritdoc cref="T:NewPlatform.Flexberry.Caching.ICacheService" />
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.MemoryCacheService.DeleteFromCacheByTag(System.String)">
+            <inheritdoc cref="T:NewPlatform.Flexberry.Caching.ICacheService" />
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.MemoryCacheService.DeleteFromCacheByTags(System.Collections.Generic.IList{System.String})">
+            <inheritdoc cref="T:NewPlatform.Flexberry.Caching.ICacheService" />
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.MemoryCacheService.ClearCache">
+            <inheritdoc cref="T:NewPlatform.Flexberry.Caching.ICacheService" />
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.MemoryCacheService.Trim(System.Int32)">
+            <inheritdoc cref="T:NewPlatform.Flexberry.Caching.ICacheService" />
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.MemoryCacheService.Exists(System.String)">
+            <inheritdoc cref="T:NewPlatform.Flexberry.Caching.ICacheService" />
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.MemoryCacheService.ExistsByTag(System.String)">
+            <inheritdoc cref="T:NewPlatform.Flexberry.Caching.ICacheService" />
+        </member>
+        <member name="P:NewPlatform.Flexberry.Caching.MemoryCacheService.DefaultExpirationTime">
+            <inheritdoc cref="T:NewPlatform.Flexberry.Caching.ICacheService" />
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.MemoryCacheService.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:NewPlatform.Flexberry.Caching.MemoryCacheService" /> class.
+            </summary>
+            <remarks>
+            Sets <see cref="P:NewPlatform.Flexberry.Caching.MemoryCacheService.DefaultExpirationTime" /> to 0.
+            </remarks>
+            <param name="cacheName">The name of cache to use to look up configuration information. If not specified then default <see cref="T:System.Runtime.Caching.MemoryCache" /> instance would be used.</param>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.MemoryCacheService.#ctor(System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:NewPlatform.Flexberry.Caching.MemoryCacheService" /> class.
+            </summary>
+            <param name="cacheName">The name of cache to use to look up configuration information. If not specified then default <see cref="T:System.Runtime.Caching.MemoryCache" /> instance would be used.</param>
+            <param name="defaultExpirationTime">Default expiration time for items stored in cache (in seconds).</param>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.MemoryCacheService.#ctor(System.String,System.Int32,System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Initializes a new instance of the <see cref="T:NewPlatform.Flexberry.Caching.MemoryCacheService" /> class.
+            </summary>
+            <param name="cacheName">The name of cache to use to look up configuration information. If not specified then default <see cref="T:System.Runtime.Caching.MemoryCache" /> instance would be used.</param>
+            <param name="defaultExpirationTime">Default expiration time for items stored in cache (in seconds).</param>
+            <param name="config">A collection of name/value pairs of configuration information to use for configuring the cache. Default value is <see langword="null" />.</param>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.MemoryCacheService.SetToCache(System.String,System.Object)">
+            <inheritdoc cref="T:NewPlatform.Flexberry.Caching.ICacheService" />
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.MemoryCacheService.SetToCache(System.String,System.Object,System.Collections.Generic.IList{System.String})">
+            <inheritdoc cref="T:NewPlatform.Flexberry.Caching.ICacheService" />
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.MemoryCacheService.SetToCache(System.String,System.Object,System.Int32)">
+            <inheritdoc cref="T:NewPlatform.Flexberry.Caching.ICacheService" />
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.MemoryCacheService.SetToCache(System.String,System.Object,System.Int32,System.Collections.Generic.IList{System.String})">
+            <inheritdoc cref="T:NewPlatform.Flexberry.Caching.ICacheService" />
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.MemoryCacheService.GetFromCache(System.String)">
+            <inheritdoc cref="T:NewPlatform.Flexberry.Caching.ICacheService" />
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.MemoryCacheService.GetFromCacheByTag(System.String)">
+            <inheritdoc cref="T:NewPlatform.Flexberry.Caching.ICacheService" />
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.MemoryCacheService.GetFromCacheByTags(System.Collections.Generic.IList{System.String})">
+            <inheritdoc cref="T:NewPlatform.Flexberry.Caching.ICacheService" />
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.MemoryCacheService.TryGetFromCache(System.String,System.Object@)">
+            <inheritdoc cref="T:NewPlatform.Flexberry.Caching.ICacheService" />
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.MemoryCacheService.TryGetFromCacheByTag(System.String,System.Collections.Generic.IEnumerable{System.Object}@)">
+            <inheritdoc cref="T:NewPlatform.Flexberry.Caching.ICacheService" />
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.MemoryCacheService.TryGetFromCacheByTags(System.Collections.Generic.IList{System.String},System.Collections.Generic.IEnumerable{System.Object}@)">
+            <inheritdoc cref="T:NewPlatform.Flexberry.Caching.ICacheService" />
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.MemoryCacheService.UpdateInCache(System.String,System.Object,System.Int32,System.Collections.Generic.IList{System.String})">
+            <inheritdoc cref="T:NewPlatform.Flexberry.Caching.ICacheService" />
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.MemoryCacheService.SetToCache``1(System.String,``0)">
+            <inheritdoc cref="T:NewPlatform.Flexberry.Caching.ICacheService" />
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.MemoryCacheService.SetToCache``1(System.String,``0,System.Collections.Generic.IList{System.String})">
+            <inheritdoc cref="T:NewPlatform.Flexberry.Caching.ICacheService" />
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.MemoryCacheService.SetToCache``1(System.String,``0,System.Int32)">
+            <inheritdoc cref="T:NewPlatform.Flexberry.Caching.ICacheService" />
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.MemoryCacheService.SetToCache``1(System.String,``0,System.Int32,System.Collections.Generic.IList{System.String})">
+            <inheritdoc cref="T:NewPlatform.Flexberry.Caching.ICacheService" />
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.MemoryCacheService.GetFromCache``1(System.String)">
+            <inheritdoc cref="T:NewPlatform.Flexberry.Caching.ICacheService" />
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.MemoryCacheService.GetFromCacheByTag``1(System.String)">
+            <inheritdoc cref="T:NewPlatform.Flexberry.Caching.ICacheService" />
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.MemoryCacheService.GetFromCacheByTags``1(System.Collections.Generic.IList{System.String})">
+            <inheritdoc cref="T:NewPlatform.Flexberry.Caching.ICacheService" />
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.MemoryCacheService.TryGetFromCache``1(System.String,``0@)">
+            <inheritdoc cref="T:NewPlatform.Flexberry.Caching.ICacheService" />
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.MemoryCacheService.TryGetFromCacheByTag``1(System.String,System.Collections.Generic.IEnumerable{``0}@)">
+            <inheritdoc cref="T:NewPlatform.Flexberry.Caching.ICacheService" />
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.MemoryCacheService.TryGetFromCacheByTags``1(System.Collections.Generic.IList{System.String},System.Collections.Generic.IEnumerable{``0}@)">
+            <inheritdoc cref="T:NewPlatform.Flexberry.Caching.ICacheService" />
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.MemoryCacheService.UpdateInCache``1(System.String,``0,System.Int32,System.Collections.Generic.IList{System.String})">
+            <inheritdoc cref="T:NewPlatform.Flexberry.Caching.ICacheService" />
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.MemoryCacheService.Dispose">
+            <summary>
+            Destroying internal MemoryCache.
+            </summary>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.MemoryCacheService.GetKeyForTag(System.String)">
+            <summary>
+            Returns internal key for storing versions of tags in cache.
+            </summary>
+            <param name="tagName">Tag's name.</param>
+            <returns>Internal key for storing versions of tags in cache.</returns>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.MemoryCacheService.IsTagValidated(System.String,System.Int32)">
+            <summary>
+            Checks if tag's version is valid.
+            </summary>
+            <param name="tagName">Tag's name.</param>
+            <param name="tagVersion">Tag's current version for stored item.</param>
+            <returns><see langword="true" /> if specified tag version equals tag's version stored in cache and <see langword="false" /> otherwise.</returns>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.MemoryCacheService.GetCacheItemsByTags(System.Collections.Generic.IList{System.String})">
+            <summary>
+            Returns collection of <see cref="T:NewPlatform.Flexberry.Caching.CacheItem" /> instances for items marked with specified tags.
+            </summary>
+            <param name="tags">List of tags for searching items in cache.</param>
+            <returns>Collection of <see cref="T:NewPlatform.Flexberry.Caching.CacheItem" /> instances for items marked with specified tags.</returns>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.MemoryCacheService.GetPolicy(System.Int32,System.Collections.Generic.IList{System.String})">
+            <summary>
+            Returns <see cref="T:System.Runtime.Caching.CacheItemPolicy" /> instance with specified params for new cache item.
+            </summary>
+            <param name="expirationTime">Expiration time for stored item (in seconds). Zero value means data stored without expiration.</param>
+            <param name="tags">Tags for cached item.</param>
+            <returns>A set of eviction and expiration details.</returns>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.MemoryCacheService.IsCacheItemValidated(NewPlatform.Flexberry.Caching.CacheItem)">
+            <summary>
+            Checks cache item's tags to ensure it is validated.
+            </summary>
+            <param name="cacheItem">Instance of <see cref="T:NewPlatform.Flexberry.Caching.CacheItem" /> class to check its validity.</param>
+            <returns><see langword="true" /> if cache item is validated, i.e. all its tags are valid.</returns>
+        </member>
+        <member name="T:NewPlatform.Flexberry.Caching.SignaledChangeEventArgs">
+            <summary>
+            Class contains event data for <see cref="T:NewPlatform.Flexberry.Caching.SignaledChangeMonitor" />.
+            </summary>
+        </member>
+        <member name="P:NewPlatform.Flexberry.Caching.SignaledChangeEventArgs.Name">
+            <summary>
+            Gets name of signal that raised event.
+            </summary>
+        </member>
+        <member name="P:NewPlatform.Flexberry.Caching.SignaledChangeEventArgs.CacheName">
+            <summary>
+            Gets name of target cache for signal that raised event.
+            </summary>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.SignaledChangeEventArgs.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:NewPlatform.Flexberry.Caching.SignaledChangeEventArgs" /> class.
+            </summary>
+            <param name="cacheName">Name of target cache for signal that raised event.</param>
+            <param name="name">Name of signal that raised event.</param>
+        </member>
+        <member name="T:NewPlatform.Flexberry.Caching.SignaledChangeMonitor">
+            <summary>
+            Cache change monitor that allows an app to fire a change notification
+            to all associated cache items.
+            </summary>
+        </member>
+        <member name="P:NewPlatform.Flexberry.Caching.SignaledChangeMonitor.UniqueId">
+            <summary>
+            Gets a value that represents the <see cref="T:NewPlatform.Flexberry.Caching.SignaledChangeMonitor" /> class instance.
+            </summary>
+        </member>
+        <member name="E:NewPlatform.Flexberry.Caching.SignaledChangeMonitor.SignalHandler">
+            <summary>
+            Optional handler for signal raising.
+            </summary>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.SignaledChangeMonitor.#ctor(System.String,System.String,System.EventHandler{NewPlatform.Flexberry.Caching.SignaledChangeEventArgs})">
+            <summary>
+            Initializes a new instance of the <see cref="T:NewPlatform.Flexberry.Caching.SignaledChangeMonitor" /> class.
+            </summary>
+            <param name="cacheName">Name of cache which is added item with <see cref="T:NewPlatform.Flexberry.Caching.SignaledChangeMonitor" />.</param>
+            <param name="signalName">Name of signal for tracking with monitor. Default value is <see langword="null" />.</param>
+            <param name="signalHandler">Event handler for raised signal. Default value is <see langword="null" />.</param>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.SignaledChangeMonitor.Signal(System.String,System.String)">
+            <summary>
+            Invokes signal handler with specified name.
+            </summary>
+            <param name="cacheName">Name of target cache for signal that raised event.</param>
+            <param name="name">Name of raised signal. Default value is <see langword="null" />.</param>
+        </member>
+        <member name="M:NewPlatform.Flexberry.Caching.SignaledChangeMonitor.Dispose(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="T:NewPlatform.Flexberry.Caching.TagItem">
+            <summary>
+            Incapsulates information about tag to store in cache.
+            </summary>
+        </member>
+        <member name="P:NewPlatform.Flexberry.Caching.TagItem.Version">
+            <summary>
+            Version of tag.
+            </summary>
+        </member>
+    </members>
+</doc>
